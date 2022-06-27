@@ -28,7 +28,7 @@ def move_media(scandir,dest,filetype):
                     if mimefile.find(filetype) != -1:
                         print(fullfilepath)
                         #its a video
-                        newfilepath=dest+"/"+fullfilepath
+                        newfilepath=dest+fullfilepath
                         os.rename(fullfilepath,newfilepath)
                 except Exception as e:
                     print(e)

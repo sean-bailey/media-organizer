@@ -19,7 +19,7 @@ with open("README.md", "r") as fh:
 print(find_packages())
 
 setup(
-    name='thingdl',
+    name='mediaorganizer',
     version='1.1.0',
     packages=find_packages(),
     entry_points={

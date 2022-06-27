@@ -20,15 +20,18 @@ def move_media(scandir,dest,filetype):
     for subdir, dirs, files in os.walk(scandir):
         if not subdir == dest:
             for file in files:
-                fullfilepath=os.path.join(subdir,file)
-                mime=magic.Magic(mime=True)
-                mimefile=mime.from_file(fullfilepath)
+                try:
+                    fullfilepath=os.path.join(subdir,file)
+                    mime=magic.Magic(mime=True)
+                    mimefile=mime.from_file(fullfilepath)
 
-                if mimefile.find(filetype) != -1:
-                    print(fullfilepath)
-                    #its a video
-                    newfilepath=dest+"/"+fullfilepath
-                    os.rename(fullfilepath,newfilepath)
+                    if mimefile.find(filetype) != -1:
+                        print(fullfilepath)
+                        #its a video
+                        newfilepath=dest+"/"+fullfilepath
+                        os.rename(fullfilepath,newfilepath)
+                except Exception as e:
+                    print(e)
 
 def main():
     parser = argparse.ArgumentParser(description='mediaorganizer allows you to sift through your media and put it all in one place')
